@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="En">
+<title>Daniel Payne | Full Stack Web Developer | Wilmington, nc</title>
+
+<head>
+
+
+
+
+	<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+
+	
+
+</head>
+
+
+<body style="background-color: rgba(92, 126, 119, 0.123);">
+
+	<div class="ball-loader">
+	  <div class="ball-loader-ball ball1"></div>
+	  <div class="ball-loader-ball ball2"></div>
+	  <div class="ball-loader-ball ball3"></div>
+	</div>
+
+
+
+	<div id="tester">
+
+		<div class="overContainer">
+			
+			<nav class="nav-container">
+				
+				<div class="nav-text-left"></div>
+				<div class="nav-text-right"></div>
+
+			</nav>
+
+			<div class="header-container">
+				<div id="headerUpper">
+					Speed<span class="bluer">></span>><span class="bluer">Reader</span>
+				</div>
+
+				<div id="headerUnder">read with a purpose</div>
+
+				<div class="mainButtonDiv">
+                	<div class="buttonMain" id="getStartBtn" onclick="showLibrary()">find your book</div>
+            	</div>
+
+			</div>
+
+			
+
+		</div>
+
+		
+
+	</div>
+
+	<div class="currentBooks">
+		
+
+		<div id="currentBooksLeft">
+
+			<div id="readerHeadline">Find the perfect balance</div>
+			<div id="readerSubline">between <span style="font-style: italic;">pace</span> and <span style="font-style: italic;">comprehension</span></div>
+
+			<div id="readerContent"><span style="font-weight:700;">Speed<span class="bluer">></span>><span class="bluer">Reader</span></span> helps you read quickly by allowing your eyes to rest in one place as the words appear. <br/><br/>
+				Slow down or speed up the texts - Find your perfect balance
+			</div>
+
+			<!-- <div class="mainButtonDiv">
+                	<div class="buttonMain" id="getStartBtn" onclick="showLibrary()">Start reading</div>
+            	</div> -->
+			
+
+		</div>
+
+		<div id="currentBooksRight">
+			
+			<img id="gifPrev" src="{{url_for('static',filename='/images/prev.gif')}}" >
+
+		</div>
+
+	</div>
+
+	<div id="currentLibrary">
+		
+		<div id="titles">
+
+			<div id="libraryTitle">Popular Titles</div>
+			
+			<div class="titleContainer">
+				
+
+				<div class="bookTitle">The Universe In A Nutshell</div>
+
+				<div class="bookAuthor">Stephen Hawking</div>
+
+				<div class="bookSubject">Science</div>
+
+				<div class="bookDesc">The Universe in a Nutshell is a 2001 book about theoretical physics by Stephen Hawking. It is generally considered a sequel and was created to update the public concerning developments since the multi-million-copy bestseller A Brief History of Time published in 1988.</div>
+
+				
+                	<div class="buttonRead" onclick="openBook('1')" >start</div>
+            	
+
+
+			</div>
+
+			<div class="titleContainer">
+				
+
+				<div class="bookTitle">Star Wars: Lost Tribe Of The Sith</div>
+
+				<div class="bookAuthor">John Jackson Miller</div>
+
+				<div class="bookSubject">Sci-Fi</div>
+
+				<div class="bookDesc">Five thousand years ago. After a Jedi ambush, the Sith mining ship Omen lies wrecked on a remote, unknown planet. ... They face any number of brutal challenges—vicious predators, lethal plagues, tribal people who worship vengeful gods—and like true Sith warriors, counter them with the dark side of the Force.</div>
+
+				<div class="buttonRead" onclick="openBook('2')" >start</div>
+
+
+			</div>
+
+			<div class="titleContainer">
+				
+
+				<div class="bookTitle">Candide</div>
+
+				<div class="bookAuthor">Voltaire</div>
+
+				<div class="bookSubject">Literature - Fiction</div>
+
+				<div class="bookDesc">Candide, satirical novel published in 1759 that is the best-known work by Voltaire. It is a savage denunciation of metaphysical optimism—as espoused by the German philosopher Gottfried Wilhelm Leibniz—that reveals a world of horrors and folly.</div>
+
+				<div class="buttonRead" onclick="openBook('3')" >start</div>
+
+
+			</div>
+
+
+
+		</div>
+
+	</div>
+
+
+
+<!-- Footer elements -->
+	<footer class="w3-container w3-padding-64 w3-center w3-opacity"> 
+
+
+	<div class="w3-xlarge w3-padding-32">
+	    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+	    <i class="fa fa-instagram w3-hover-opacity"></i>
+	    <i class="fa fa-snapchat w3-hover-opacity"></i>
+	    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+	    <i class="fa fa-twitter w3-hover-opacity"></i>
+	    <i class="fa fa-linkedin w3-hover-opacity"></i>
+
+ 	</div>
+ 
+</footer>
+
+<!-- End Footer -->
+
+
+
+	
+	</body>
+
+	<script type="text/javascript">
+		const imageUrl = "{{ url_for('static', filename='/images/reader4edit.webp')}}";
+		let bgElement = document.querySelector("#tester");
+		let preloaderImg = document.createElement("img");
+		preloaderImg.src = imageUrl;
+
+		preloaderImg.addEventListener('load', (event) => {
+		    bgElement.style.backgroundImage = `url(${imageUrl})`;
+		    preloaderImg = null;
+		    document.querySelector("#tester").style.opacity='1';
+			document.querySelector(".ball-loader").style.display = 'none';
+			document.querySelector(".overContainer").style.display = 'block';
+			document.querySelector(".currentBooks").style.display = 'flex';
+			document.querySelector("#currentLibrary").style.display = 'flex';
+			document.querySelector('footer').style.display = 'flex';
+		});
+
+		function showLibrary(){
+			document.querySelector('#currentLibrary').scrollIntoView({ 
+			  behavior: 'smooth' 
+			});
+		}
+
+		function openBook(x){
+			x === '1' ? 
+			window.location.href="{{url_for('words', id = 2)}}" :
+			x === '2' ?
+			window.location.href="{{url_for('words', id = 10)}}" :
+			x ==='3' ?
+			window.location.href="{{url_for('words', id = 15)}}"
+			 : null;
+
+		}
+
+		
+
+	</script>
+
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/wordsHome.js')}}"></script>
+
+	
+</html>

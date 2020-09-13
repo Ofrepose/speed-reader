@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<html lang="En">
+<title>Speed-Reader</title>
+
+<head>
+
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+
+	<div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+
+	<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='words.css') }}">
+
+	<link rel="stylesheet" type=text/css media="screen and (max-width:750px)" href="{{ url_for('static', filename='wordsSmall.css') }}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+	 <link href="https://fonts.googleapis.com/css?family=Lato|Source+Sans+Pro&display=swap" rel="stylesheet">	
+
+</head>
+
+
+<body style="margin-bottom: 0%; background-color: #fff;">
+
+	<div id="div1P">
+		
+		<div id="topP">
+
+			<div id="topItemsSizer">
+			
+			<div class="topPItem">profile</div>
+
+			<div class="topPItem">faq</div>
+			
+			<div class="topPItem">logout</div>
+
+			</div>
+
+		</div>	
+
+		<div id="libraryDiv">
+			
+			<div id="libraryDivTitle">Library</div>
+
+			<div id="libraryDivList">
+				
+				{% for b in books %}
+
+					{% if b.compat == 2 %}
+
+				<a href="{{url_for('words', id = b.id)}}" style="min-width: 100%; max-width: 100%; min-height: 20px; max-height: 20px; text-decoration: line-through;"><div class="libraryProItem">{{b.name}}</div></a>
+
+					{% endif %}
+
+					{% if b.compat == 1 %}
+
+				<a href="{{url_for('words', id = b.id)}}" style="min-width: 100%; max-width: 100%; min-height: 20px; max-height: 20px;"><div class="libraryProItem">{{b.name}}</div></a>
+
+					{% endif %}
+
+				{% endfor %}				
+
+			</div>
+
+		</div>
+
+		<div id="addBook">
+			
+			<div id="addBookTitle">Add Book</div>
+
+			<label for='pictureFile1'><img src="{{ url_for('static', filename = 'xWhite.png') }}" class="user" style="z-index: 200;"></label>
+
+			<form style="height: 100%; width: 100%; opacity: 1;" id="bookAdd" method = "POST" action = "{{url_for('uploadBook')}}" enctype="multipart/form-data">
+				<input type="text" name="name" id="bookName" required placeholder="title" />
+				<input type="text" name="author" id="bookName"  required placeholder="author" />
+				<input id='pictureFile1' type="file" name=file required style="max-width:0px; max-height: 0px; display: none;"></input>
+			</form>
+
+		</div>
+
+		<div id="searchDivH">
+
+			<div id="searchBarDivH">
+
+				<form style="height: 100%; width: 100%; opacity: 1;" id="pageSave" method = "POST" action = "{{url_for('wordsHome') }}" enctype="multipart/form-data">
+					<input type="text" name="" id="searchBar" />
+
+				</form>
+
+			</div>
+
+			<div id="searchButtonDivH">
+
+				<div id="searchButtonH">
+
+					<div id="searchButtonTextH">Search</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	</body>
+
+
+	<script type="text/javascript">
+		
+		document.getElementById('pictureFile1').onchange = function() {
+		document.getElementById('bookAdd').submit();
+	};	
+
+
+
+	</script>
+
+</html>

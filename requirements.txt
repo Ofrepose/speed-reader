@@ -1,0 +1,12 @@
+pyzbar
+opencv-python
+pypdf2
+geopy
+numpy
+sqlalchemy
+oauth2client
+flask
+requests
+flask-sqlalchemy
+flask-mail
+flask-login

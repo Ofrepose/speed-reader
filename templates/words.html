@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="En">
+<title>Speed-Reader</title>
+
+<head>
+
+	<script src="https://code.jquery.com/jquery-1.12.3.min.js" integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<div id="loadOverlay" style="background-color:#333; position:absolute; top:0px; left:0px; width:100%; height:100%; z-index:2000;"></div>
+
+	<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/index.css') }}">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+</head>
+
+<body style="margin-bottom: 0%;">
+	<div id="mainDiv">
+		<div id="top">
+			<div class="fontChanges"></div>
+
+			<div onclick="pauseRead()" id="pause">Pause</div>
+
+			<div onclick="unpauseRead()" id="unpause">Continue</div>
+
+			<div class="fontChanges">
+				<div id="fontIncrease" onclick="changeFont('increase');">
+					<span class="tiny">A</span>A
+				</div>
+
+				<div id="fontDecrease" onclick="changeFont('decrease');">
+					A<span class="tiny">A</span>
+				</div>
+			</div>
+
+		</div>
+
+		<div id="wordCon">
+			<div id="leftArrow" onclick="rewind()"><</div>
+
+			<div id="rightArrow" onclick="fastForward()">></div>
+
+			<div id="lst"><div class="loader"></div></div>
+		</div>
+
+		<div id="bottom">
+			<div class="buttons" onclick="slowDown()" id="slowDown">-</div>
+
+			<div class="buttons" onclick="savePage()" id="save">SAVE</div>
+
+			<div class="buttons" onclick="speedUp()" id="speedUp">+</div>
+		</div>
+	</div>
+
+	<form
+		style="max-height: 0px; max-width: 0px; opacity: 0;"
+		id="pageSave"
+		method="POST"
+		action="{{url_for('words', id = book_id)}}"
+		enctype="multipart/form-data"
+	>
+		<input type="number" name="page" placeholder="" id="name" value="3502" />
+	</form>
+</body>
+
+
+<script type="text/javascript">
+
+	let save_location = 0;
+	let w_lst
+	let w_lstPeriod
+	let speed = 0;
+	let p_content
+	let w_lstPeriodCount
+	let cur_Period
+	let amt=0;
+
+	firstGrab();
+
+	async function firstGrab(){
+		return await axios.get("{{url_for('api_words', id = book_id)}}")
+		.then(response=>{
+			w_lst = response.data.content.split(" ").reverse();
+			w_lstPeriod = response.data.content.split(".");
+			save_location = response.data.save_loc
+			setTimeout(async()=>{
+			document.querySelector(".loader").style.height = "0px";
+			document.querySelector(".loader").style.width = "0px";			
+
+		},2500)
+
+			setTimeout(()=>{
+				continueOn()
+			},3000)
+			
+		})
+		.catch(err=>{
+			console.log(err)
+		})
+	}
+
+	async function continueOn(){
+		p_content = [];
+
+		w_lstPeriodCount = w_lstPeriod.length -1 ;
+
+		cur_Period = 0;
+
+		speed = 500;
+
+		console.log('save location is ' + save_location);
+
+		if(parseInt(save_location) == 0){
+
+			var amt = (w_lst.length -1);
+			console.log('no save location');
+		}
+
+		if(parseInt(save_location) != 0){
+
+			var amt = save_location;	
+			console.log('found save location');
+		}
+		timer(amt)
+	}
+
+</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/words.js')}}"></script>
+
+
+
+</html>

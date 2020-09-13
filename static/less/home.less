@@ -1,0 +1,428 @@
+
+html{
+  scroll-behavior: smooth;
+}
+
+
+#tester{
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  height: 90vh;
+  text-align: center;
+  display: block;
+  margin-top: 0px;
+  -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    @media @mobile{
+      height:100vh;
+    }
+
+    .overContainer{
+      display: none;
+      -webkit-transition: all 1s ease-in-out;
+      -moz-transition: all 1s ease-in-out;
+      -o-transition: all 1s ease-in-out;
+      transition: all 1s ease-in-out;
+    }
+
+    .nav-container{
+      opacity: inherit;
+      display: flex;
+      justify-content: space-between;
+      height:80px;
+    }
+
+    .header-container{
+      opacity: inherit;
+      height: 26%;
+      align-items: center;
+
+      @media @mobile{
+        width: 100%;
+      }
+      
+
+    }
+
+    #headerUpper{
+      font-family:'proxima_novathin';
+      font-size: 70px;
+      letter-spacing: 3px;
+      color: white;
+
+      @media @mobile{
+        width: 100%;
+        text-align: center;
+        font-size: 35px;
+      }
+    }
+
+    #headerUnder{
+      font-family:'gPro';
+      font-size: 30px;
+      letter-spacing: 3px;
+      color: white;
+      font-variant: small-caps;
+      @media @mobile{
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+      }
+
+    }
+}
+
+.mainButtonDiv{
+  margin: 15px auto;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+
+  .buttonMain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 251px;
+    height: 57px;
+    margin-top: 36px;
+    border-radius: 43.5px;
+    font-size: 25px;
+    line-height: 25px;
+    letter-spacing: 3px;
+    font-family: 'gPro';
+    
+    background-color: lightblue;
+    transition: .25s all ease-in-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    &:hover{
+      cursor: pointer;
+      background-color: white;
+      transition: .25s all ease-in-out;
+
+    }
+
+    @media @mobile{
+      font-size: 15px;
+      width: 155px;
+      height: 50px;
+    }
+  }
+}
+
+
+footer{
+  opacity: inherit;
+  height: 80px;
+  display: none;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  margin: auto auto 0 auto;
+  .w3-xlarge{
+    font-size: 20px;
+    color: gray;
+  }
+}
+
+.currentBooks{
+  margin: 10vh auto 10vh auto;
+  display: none;
+  flex-wrap: wrap;
+  height:50vh;
+  width: 70vw;
+  max-width: 1200px;
+
+  @media @mobile{
+    width: 100%;
+    height: auto;
+  }
+
+  #currentBooksLeft{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 66.66%;
+    align-content: center;
+    @media @mobile{
+      width: 100%;
+      height: auto;
+      margin-bottom: 10vh;
+    }
+
+    #readerHeadline{
+       font-family:'proxima_novathin';
+      font-size: 70px;
+      letter-spacing: 3px;
+      color: gray;
+
+
+      @media @mobile{
+        width: 95%;
+        text-align: left;
+        font-size: 35px;
+        margin: auto;
+      }
+    }
+
+    #readerSubline{
+      font-family:'gPro';
+      font-size: 30px;
+      letter-spacing: 3px;
+      color: black;
+      font-variant: small-caps;
+      @media @mobile{
+        width: 95%;
+        margin: auto;
+        text-align: left;
+        font-size: 25px;
+    }
+  }
+  #readerContent{
+    margin-top: 30px;
+    width: 80%;
+    font-family:'proxima_novathin';
+      font-size: 20px;
+      letter-spacing: 1.5px;
+
+      color: gray;
+      @media @mobile{
+        width: 95%;
+        font-size: 15px;
+        margin: 15px auto;
+      }
+  }
+
+  .buttonMain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: left;
+    width: 251px;
+    height: 57px;
+    margin: 36px auto auto 0;
+    border-radius: 43.5px;
+    font-size: 25px;
+    line-height: 25px;
+    letter-spacing: 3px;
+    font-family: 'gPro';
+    
+    background-color: lightblue;
+    transition: .25s all ease-in-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    &:hover{
+      cursor: pointer;
+      background-color: white;
+      transition: .25s all ease-in-out;
+      font-style: italic;
+
+    }
+
+    @media @mobile{
+      font-size: 15px;
+      width: 155px;
+      height: 50px;
+      margin: 36px auto 30px auto;
+    }
+  }
+}
+
+  #currentBooksRight{
+    margin:auto;
+    height: 80%;
+    width: 33.33%;
+    @media @mobile{
+      width: 60%;
+      height: 33.33%;
+      margin-bottom: 10vh;
+    }
+    
+
+    #gifPrev{
+      object-fit: contain;
+      
+      opacity: .75;
+      
+    }
+
+  }
+  
+
+}
+
+#currentLibrary{
+  margin: 10vh auto 10vh auto;
+  display: none;
+  flex-wrap: wrap;
+  height:50vh;
+  width: 70vw;
+  max-width: 1200px;
+  
+
+  @media @mobile{
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  #titles{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    #libraryTitle{
+      font-family: 'proxima_novathin';
+      font-size: 70px;
+      letter-spacing: 3px;
+      color: gray;
+      width: 100%;
+      text-align:center;
+      @media @mobile{
+        font-size: 35px;
+        width: 95%;
+
+      }
+    }
+
+    .titleContainer{
+
+      width: 25%;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+      @media @mobile{
+        width: 90%;
+        /*background-color: white;*/
+        margin: 15px auto;
+
+      }
+
+      .bookTitle{
+        width: 100%;
+        text-align: left;
+        font-family: 'gPro';
+        font-size: 25px;
+
+      }
+      .bookAuthor{
+        width: 100%;
+        text-align: left;
+        font-family: 'gPro';
+        font-size: 20px;
+      }
+
+      .bookSubject{
+        width: 100%;
+        text-align: left;
+        font-family: 'gPro';
+        font-size: 20px;
+        color: gray;
+      }
+
+      .bookDesc{
+        width: 100%;
+        text-align: left;
+        font-family: 'gPro';
+        font-size: 15px;
+      }
+
+      .buttonRead{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: left;
+    width: 151px;
+    
+    margin: 36px auto auto auto;
+    border-radius: 43.5px;
+    font-size: 25px;
+    /*line-height: 25px;*/
+    letter-spacing: 3px;
+    font-family: 'gPro';
+    
+    background-color: lightblue;
+    transition: .25s all ease-in-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    &:hover{
+      cursor: pointer;
+      transition: .25s all ease-in-out;
+
+
+    }
+
+    @media @mobile{
+      font-size: 20px;
+      width: 155px;
+      height: 30px;
+      line-height:30px;
+      margin: 36px auto 30px auto;
+      box-shadow: none;
+    }
+  }
+
+    }
+  }
+}
+
+
+
+
+.bluer{
+  color: lightblue;
+}
+
+
+
+/*animations*/
+.ball-loader{
+  width: 125 + 0px;
+  height: (100 / 3) - 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.ball-loader-ball{
+  will-change: transform;
+  height:(125 / 3) - 10px;
+  width: (125 / 3) - 10px;
+  border-radius: 50%;
+  background-color: lightblue;
+  position: absolute;
+  animation: grow .75s ease-in-out infinite alternate;
+  
+  
+  &.ball1{
+    left:0;
+    transform-origin: 100% 50%;
+  }
+  &.ball2{
+    left:50%;
+    transform: translateX(-50%) scale(1);
+    animation-delay: 0.33s;
+  }
+  &.ball3{
+    right:0;
+    animation-delay: 0.66s;
+  }
+}
+
+@keyframes grow{
+  to{
+    transform: translateX(-50%) scale(0);
+  }
+}
