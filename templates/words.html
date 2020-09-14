@@ -88,21 +88,17 @@
 			save_location = response.data.save_loc
 			setTimeout(async()=>{
 			document.querySelector(".loader").style.height = "0px";
-			document.querySelector(".loader").style.width = "0px";			
+			document.querySelector(".loader").style.width = "0px";
+			continueOn()
 
 		},2500)
-
-			setTimeout(()=>{
-				continueOn()
-			},3000)
-			
 		})
 		.catch(err=>{
 			console.log(err)
 		})
 	}
 
-	async function continueOn(){
+	function continueOn(){
 		p_content = [];
 
 		w_lstPeriodCount = w_lstPeriod.length -1 ;
